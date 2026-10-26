@@ -1,0 +1,52 @@
+**To get StudentPrediction.csv from forcast_component.py use the below cammand**
+uv run python -c "from forecast_component import MentoringDemandForecaster; from main import forecaster, read_student_dataset, prepare_model_features, dataset_identifiers; rows=read_student_dataset('engineered_data/student_course_features.csv'); ids,courses=dataset_identifiers(rows); result=forecaster.forecast(prepare_model_features(rows), student_ids=ids, course_codes=courses); MentoringDemandForecaster.export_student_predictions(result, 'StudentPredictions.csv')"
+
+
+**To run mentor_managment.py**
+uv run python mentor_management.py --students StudentPredictions.csv --mentors mentor_data.csv --output-dir mentor_management_outputs
+
+**To include current mentor assignments, add:**
+--existing-assignments current_mentor_assignments.csv
+
+
+**Sample Input: To test it in api endpoint.**
+{
+  "student_id": 11391,
+  "code_module": "AAA",
+  "code_presentation": "2013J",
+  "gender": "M",
+  "region": "East Anglian Region",
+  "highest_education": "HE Qualification",
+  "imd_band": "90-100%",
+  "age_band": "55<=",
+  "disability": "N",
+  "num_of_prev_attempts": 0,
+  "studied_credits": 240,
+  "registration_lead_days": 159,
+  "expected_assessments": 6,
+  "average_assessment_score": 81,
+  "latest_assessment_score": 80,
+  "assessment_score_trend": 0.00891,
+  "assessment_score_std": 2.94392,
+  "assessment_weighted_score": 81.6,
+  "submitted_assessments": 3,
+  "upcoming_assessment_count": 1,
+  "missed_assessment_count": 0,
+  "assessment_completion_rate": 100,
+  "total_clicks": 710,
+  "active_days": 29,
+  "last_activity_day": 129,
+  "early_clicks": 329,
+  "recent_clicks": 118,
+  "resource_diversity": 43,
+  "activity_type_diversity": 6,
+  "average_daily_clicks": 24.48276,
+  "engagement_change": -6.39394,
+  "inactive_days": 5,
+  "course_enrollment_count": 349,
+  "enrollment_growth_rate": 0,
+  "historical_course_failure_rate": 0,
+  "course_duration_days": 268,
+  "assessments_due_by_cutoff": 3,
+  "assessment_schedule_density": 0.022388
+}

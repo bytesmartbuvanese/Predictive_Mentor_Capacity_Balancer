@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+*.swp
+
+raw_dataset/
+cleaned_data/
+engineered_data/
+models/
+mentor_management_outputs/
